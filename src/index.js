@@ -62,14 +62,15 @@ function onLoadMore() {
    const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
    const { totalHits } = resp.data;
          
-   renderList(resp.data.hits, contGallery);
-   softScroll();
-  
-    // SimpleLightbox
+   // SimpleLightbox
    galleryLightBox.refresh();
 
-   if ( totalImages > totalHits ) {
+   if ( totalImages >= totalHits ) {
        Notiflix.Notify.info(`We are sorry, but you have reached the end of search results`);
+    }
+    else {
+      renderList(resp.data.hits, contGallery);
+      softScroll();
     }
     }
    )
