@@ -67,6 +67,7 @@ function onLoadMore() {
 
    if ( totalImages >= totalHits ) {
        Notiflix.Notify.info(`We are sorry, but you have reached the end of search results`);
+       searchForm.reset();
     }
     else {
       renderList(resp.data.hits, contGallery);
