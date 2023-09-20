@@ -38,11 +38,8 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
       
       btnLoad.classList.remove("is-hidden");
       btnLoad.textContent = "Load more" ;
-
       softScroll();
-      window.addEventListener('scroll', handleScroll);
-
-    }
+      }
     else {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.', {
@@ -76,8 +73,6 @@ function onClickLoadMore () {
      
      renderList(resp.data.hits, contGallery);
      softScroll();
-     window.addEventListener('scroll', handleScroll);
-
      galleryLightBox.refresh();
     }
    )
