@@ -1,5 +1,9 @@
-/*--@import '~node_modules/modern-normalize/modern-normalize.css';--*/
+/*--:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+}--*/
 
+@import '~node_modules/modern-normalize/modern-normalize.css';
 a {
   display: block;
   text-decoration: none;
@@ -51,19 +55,18 @@ img {
 }--*/
 
 .search-form {
-  
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   right: 0;
-  display:flex;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: rgb(224, 212, 212);
+  background-color: rgb(192, 206, 223);
 }
 
 .form-input {
@@ -76,10 +79,14 @@ img {
 
 .btn {
 border-radius: 5px;
+width: 50px;
 border-color: transparent;
-background-color: rgb(69, 71, 192);
+background-color: rgb(117, 116, 192);
 }
 
+.btn:hover {
+  background-color: rgb(67, 67, 216);
+}
 
 .info {
   display: flex;
@@ -96,6 +103,20 @@ background-color: rgb(69, 71, 192);
   gap: 5px;
   justify-content: space-between;
  }
+
+.load-more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  border-color: transparent;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
 
 
 .is-hidden {

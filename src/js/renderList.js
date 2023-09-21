@@ -1,7 +1,7 @@
-// Скрипт с функцией рендера карточек изображений в галерею
+// Скрипт з функцією рендера карток
 
 
-// Функция рендера карточек изображений в галерею
+// Функція рендера карток до галеріі
 export const renderList = (arr, container) => {
     const list = arr.map((item) => `
     <a class="gallery__link" href="${item.largeImageURL}">

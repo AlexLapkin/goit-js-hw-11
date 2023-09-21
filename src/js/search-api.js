@@ -1,5 +1,4 @@
 // Скрипт с асинхронной функцией запроса по ключевому слову 
-
 import axios from "axios";
 
 
@@ -19,11 +18,6 @@ export async function searchImage (word, page) {
      page: page,
      per_page: 40,
    },
-}
-   try {
-      const resp = await axios.get(BASE_URL, options);
-      return resp;
-   }
-   catch (error) { console.error(error); 
-   }
+ }
+     return await axios.get(BASE_URL, options);
 }
