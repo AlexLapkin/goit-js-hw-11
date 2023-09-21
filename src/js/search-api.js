@@ -1,8 +1,8 @@
-// Скрипт с асинхронной функцией запроса по ключевому слову 
+// Скрипт з асінхроною функцією запиту за ключовим словом 
 import axios from "axios";
 
 
-// Асинхронная функция запроса на pixabay
+// Асинхронна функція запиту на Pixabay
 export async function searchImage (word, page) {
    
    const API_KEY = '39523931-0ebb3b1d8d203aea00476c616' ;

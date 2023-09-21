@@ -8,6 +8,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const searchForm = document.querySelector('.search-form');
+const btnSubmit = document.querySelector('.btn');
 const contGallery = document.querySelector('.gallery');
 const btnLoad = document.querySelector('.load-more');
 
@@ -23,7 +24,14 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
    page = 1;
    contGallery.innerHTML = '';
    const { searchQuery } = event.currentTarget.elements;
-      
+
+   if ((searchQuery.value).trim() === "") {
+   Notiflix.Notify.info(`Please fill the search form!`, {
+    position: "center-center"
+   });
+   searchForm.reset();
+   return;
+   }
    try {
    const resp = await searchImage(searchQuery.value, page)
      
@@ -38,20 +46,24 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
         position: 'right-top',
         timeout: 3000,
       });
-      btnLoad.classList.remove("is-hidden");
-      btnLoad.textContent = "Load more" ;
-      //softScroll();
-     
-    }
-    else {
+      
+      if ( totalHits > per_page ) {
+        btnLoad.classList.remove("is-hidden");
+        btnLoad.textContent = "Load more" ;
+       }  else {
+        Notiflix.Notify.info(`We are sorry, but you have reached the end of search results`);
+        btnLoad.classList.add("is-hidden");
+      }
+   }     
+     else {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.', {
           position: 'center-center',
           timeout: 3000,
           } 
         )
-    }
-   }
+        }
+      }
     catch (error){ (console.log(error));
    }
   }
@@ -68,7 +80,7 @@ async function onClickLoadMore () {
   const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
   const { totalHits } = resp.data;
           
-     if ( totalImages > totalHits ) {
+     if ( totalImages >= totalHits ) {
        Notiflix.Notify.info(`We are sorry, but you have reached the end of search results`);
        btnLoad.classList.add("is-hidden");
       }
@@ -84,7 +96,7 @@ async function onClickLoadMore () {
 searchForm.addEventListener("submit", onSubmit);
 btnLoad.addEventListener ("click", onClickLoadMore);
 
-// Функція плавного скролу
+// Функція плавного скролу у разі подальшого завантаження зображень
 function softScroll() {
 const { height: cardHeight } = contGallery.firstElementChild.getBoundingClientRect();
 
@@ -93,15 +105,3 @@ top: cardHeight * 2,
 behavior: "smooth",
 });
 }
-
-/*--
-// Функція визначення низу сторінки 
-function endOfPage() {
-  if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
-       onLoadMore();
-     }
- }
- 
-// Прослуховувач подіі
-window.addEventListener("scroll", endOfPage);
---*/

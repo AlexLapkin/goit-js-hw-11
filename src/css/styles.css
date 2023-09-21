@@ -78,6 +78,8 @@ img {
 }
 
 .btn {
+display: block;  
+cursor: pointer;  
 border-radius: 5px;
 height: 35px;
 width: 50px;
@@ -107,6 +109,7 @@ background-color: rgb(117, 116, 192);
 
 .load-more {
   display: block;
+  cursor: pointer;
   margin-left: auto;
   margin-right: auto;
   width: 150px;
