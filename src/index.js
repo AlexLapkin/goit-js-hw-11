@@ -40,7 +40,7 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
       });
       btnLoad.classList.remove("is-hidden");
       btnLoad.textContent = "Load more" ;
-      softScroll();
+      //softScroll();
      
     }
     else {
