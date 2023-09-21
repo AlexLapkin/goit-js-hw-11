@@ -22,7 +22,7 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
    btnLoad.classList.add("is-hidden");
    contGallery.innerHTML = '';
    const { searchQuery } = event.currentTarget.elements;
-   searchImage(searchQuery.value, page)
+   await searchImage(searchQuery.value, page)
    .then(function (resp) {
     
      const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
@@ -60,7 +60,7 @@ async function onClickLoadMore () {
    
   const { searchQuery } = searchForm.elements;
   
-  searchImage(searchQuery.value, page)
+  await searchImage(searchQuery.value, page)
   .then(function (resp) {
    const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
    const { totalHits } = resp.data;
