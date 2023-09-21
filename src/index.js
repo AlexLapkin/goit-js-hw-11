@@ -17,12 +17,12 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
 
 
 // Функция прослушивания при отправке формы
-   async function onSubmit (event) {
+   function onSubmit (event) {
    event.preventDefault();
    btnLoad.classList.add("is-hidden");
    contGallery.innerHTML = '';
    const { searchQuery } = event.currentTarget.elements;
-   await searchImage(searchQuery.value, page)
+   searchImage(searchQuery.value, page)
    .then(function (resp) {
     
      const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
@@ -53,14 +53,14 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
 
 
 // Функция прослушивания кнопки Load more
-async function onClickLoadMore () {
+ function onClickLoadMore () {
   galleryLightBox.refresh();
   page += 1;
   let totalImages = per_page * page;
    
   const { searchQuery } = searchForm.elements;
   
-  await searchImage(searchQuery.value, page)
+   searchImage(searchQuery.value, page)
   .then(function (resp) {
    const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
    const { totalHits } = resp.data;
