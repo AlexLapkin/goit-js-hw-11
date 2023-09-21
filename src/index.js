@@ -17,7 +17,7 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
 
 
 // Функция прослушивания при отправке формы
-   function onSubmit (event) {
+   async function onSubmit (event) {
    event.preventDefault();
    btnLoad.classList.add("is-hidden");
    contGallery.innerHTML = '';
@@ -26,7 +26,6 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
    .then(function (resp) {
     
      const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = resp.data;
-      console.log(resp.data.hits);
       const { totalHits } = resp.data;
             
       if ((resp.data.hits).length > 0) {
@@ -54,8 +53,8 @@ let galleryLightBox = new SimpleLightbox('.gallery a');
 
 
 // Функция прослушивания кнопки Load more
-function onClickLoadMore () {
-   galleryLightBox.refresh();
+async function onClickLoadMore () {
+  galleryLightBox.refresh();
   page += 1;
   let totalImages = per_page * page;
    
